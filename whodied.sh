@@ -9,7 +9,7 @@ IFS=$(echo -n ",")
 PORT=${PORT:-22}
 
 for EACH_SERVER in ${SERVERS}; do
-    output=$(nmap -sS "${EACH_SERVER}${POSTFIX}" -p "${PORT}")
+    output=$(sudo nmap -sS "${EACH_SERVER}${POSTFIX}" -p "${PORT}")
     if echo "${output}" | grep -q "${PORT}/tcp open" ; then
         echo -e "alive ${EACH_SERVER}"
     else
